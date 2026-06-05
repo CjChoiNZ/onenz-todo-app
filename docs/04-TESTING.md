@@ -1,51 +1,51 @@
 # 04 — Testing
 
-> 유닛 테스트 + 웹 자동화(통합) 테스트
+> Unit tests + web automation (integration) tests
 
-## 1. 유닛 테스트
+## 1. Unit Tests
 
-위치: `packages/todo_app/test/`
+Location: `packages/todo_app/test/`
 
-### 테스트 대상
+### Test Targets
 
-- **TodoListNotifier** — 핵심 상태 로직
-  - `add()` → 리스트에 항목 추가됨
-  - `toggle()` → `isCompleted` 토글
-  - `remove()` → 리스트에서 삭제
-  - `edit()` → title/description 변경
+- **TodoListNotifier** — core state logic
+  - `add()` → item added to list
+  - `toggle()` → `isCompleted` toggled
+  - `remove()` → item removed from list
+  - `edit()` → title/description updated
 
-- **Todo 모델**
-  - `copyWith()` 정상 동작
-  - 동일 id → 동등성 (`==`) 통과
+- **Todo model**
+  - `copyWith()` works correctly
+  - Same id → equality (`==`) passes
 
-### 실행
+### Run
 
 ```bash
 melos run test
-# 또는
+# or
 cd packages/todo_app && flutter test
 ```
 
-## 2. 웹 자동화 테스트 (Integration)
+## 2. Web Automation Tests (Integration)
 
-위치: `packages/todo_app/integration_test/`
+Location: `packages/todo_app/integration_test/`
 
-### 테스트 시나리오
+### Test Scenarios
 
-1. 앱 시작 → 빈 상태 표시 확인
-2. FAB 탭 → AddTodoScreen 이동 확인
-3. 제목 입력 + 저장 → HomeScreen에 항목 표시
-4. 체크박스 탭 → 완료 상태 변경
-5. 삭제 버튼 → 항목 제거
+1. App starts → empty state displayed
+2. Tap FAB → navigates to AddTodoScreen
+3. Enter title + save → item appears on HomeScreen
+4. Tap checkbox → completion state toggles
+5. Tap delete → item removed
 
-### 실행
+### Run
 
 ```bash
 cd packages/todo_app
 flutter test integration_test --platform chrome
 ```
 
-## 완료 기준
+## Done Criteria
 
-- 유닛 테스트 전부 통과
-- 웹 통합 테스트 Chrome에서 통과
+- All unit tests pass
+- Web integration tests pass on Chrome

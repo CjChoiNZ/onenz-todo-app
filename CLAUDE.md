@@ -24,3 +24,9 @@ We separate our shared design system from our core business domain using a clean
 └── packages/
     ├── ui_elements/       # Our Shared UI Design System (Buttons, TextFields, Cards)
     └── todo_app/          # Our Core Product (Business logic, State, and Screens)
+
+## Git Rules
+- Use Conventional Commits
+- Use imperative mood for commit messages
+- Use English for all code, issue descriptions and commit subjects.
+

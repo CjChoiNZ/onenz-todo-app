@@ -1,16 +1,16 @@
 # 01 — Project Setup
 
-> Melos 모노레포 초기화 및 루트 설정 파일 생성
+> Melos monorepo initialization and root configuration files.
 
-## 할 일
+## Tasks
 
 1. `git init`
-2. 루트 `pubspec.yaml` 생성 (melos dev dependency만)
-3. `melos.yaml` 생성 (packages glob + 기본 스크립트)
-4. `.gitignore` 생성
-5. `packages/ui_elements/` 와 `packages/todo_app/` 디렉토리 생성
+2. Create root `pubspec.yaml` (melos dev dependency only)
+3. Create `melos.yaml` (packages glob + basic scripts)
+4. Create `.gitignore`
+5. Create `packages/ui_elements/` and `packages/todo_app/` directories
 
-## 루트 pubspec.yaml
+## Root pubspec.yaml
 
 ```yaml
 name: onenz_todo_app_workspace
@@ -46,7 +46,7 @@ scripts:
       failFast: true
 ```
 
-## 완료 기준
+## Done Criteria
 
-- `melos bootstrap` 성공
-- `melos list` 에서 2개 패키지 표시
+- `melos bootstrap` succeeds
+- `melos list` shows 2 packages
