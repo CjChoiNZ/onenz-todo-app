@@ -1,10 +1,8 @@
 /// The UI Elements design system library.
 ///
 /// This package provides shared, reusable UI components
-/// (Buttons, TextFields, Cards) and theme definitions
 /// for the OneNZ To-Do App.
-library ui_elements;
-
+library;
 // Theme
 export 'src/theme/app_theme.dart';
 
