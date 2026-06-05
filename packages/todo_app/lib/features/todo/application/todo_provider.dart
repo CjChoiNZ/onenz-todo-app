@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../domain/todo_model.dart';
+import '../domain/todo_model.dart';
 
 /// Provides the list of [Todo] items.
 ///
