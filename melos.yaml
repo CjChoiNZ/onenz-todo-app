@@ -1,0 +1,49 @@
+name: onenz_todo_app_workspace
+repository: https://github.com/onenz/todo-app
+
+packages:
+  - packages/**
+
+command:
+  bootstrap:
+    usePubspecOverrides: true
+
+scripts:
+  analyze:
+    description: Run dart analyze across all packages.
+    run: dart analyze .
+    exec:
+      concurrency: 1
+
+  format:
+    description: Format all Dart files.
+    run: dart format .
+    exec:
+      concurrency: 1
+
+  clean:
+    description: Clean all packages.
+    run: flutter clean
+    exec:
+      concurrency: 1
+
+  test:
+    description: Run tests in all packages.
+    run: flutter test
+    exec:
+      concurrency: 1
+      failFast: true
+
+  build:android:
+    description: Build the todo_app for Android.
+    run: flutter build apk --release
+    packageFilters:
+      scope:
+        - todo_app
+
+  build:web:
+    description: Build the todo_app for Web.
+    run: flutter build web --release
+    packageFilters:
+      scope:
+        - todo_app
