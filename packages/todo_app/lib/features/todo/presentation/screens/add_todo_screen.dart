@@ -58,11 +58,27 @@ class _AddTodoScreenState extends ConsumerState<AddTodoScreen> {
             title: title,
             description: _descriptionController.text.trim(),
           );
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text('Task updated successfully'),
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          duration: const Duration(seconds: 2),
+        ),
+      );
     } else {
       ref.read(todoListProvider.notifier).add(
             title,
             description: _descriptionController.text.trim(),
           );
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text('Task added successfully'),
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          duration: const Duration(seconds: 2),
+        ),
+      );
     }
 
     context.pop();

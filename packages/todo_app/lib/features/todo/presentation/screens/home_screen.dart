@@ -72,9 +72,18 @@ class HomeScreen extends ConsumerWidget {
                         ),
                       ),
                       TextButton(
-                        onPressed: () => ref
-                            .read(todoListProvider.notifier)
-                            .remove(todo.id),
+                        onPressed: () {
+                          ref.read(todoListProvider.notifier).remove(todo.id);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: const Text('Task removed successfully'),
+                              behavior: SnackBarBehavior.floating,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              duration: const Duration(seconds: 2),
+                            ),
+                          );
+                        },
                         child: const Text(
                           'Remove',
                           style: TextStyle(color: Colors.red),
