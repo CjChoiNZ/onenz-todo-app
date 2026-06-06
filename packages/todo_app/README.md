@@ -3,12 +3,19 @@
 The core product package of the OneNZ To-Do application built using Flutter, Riverpod, GoRouter, and a custom `ui_elements` design system.
 
 ## Key Features
-* **Modern Minimalist UI/UX**: Soft flat layout using iOS System Blue (`#007AFF`) accents on light gray backgrounds (`#F0F0F0`).
-* **Title Validation**: Real-time validation preventing titles exceeding 50 characters, with interactive helper messages.
-* **Ellipsis Overflow Support**: Truncates long titles and descriptions gracefully with `...` to ensure layout consistency.
-* **State Management**: Scalable architecture powered by `flutter_riverpod` (StateNotifier).
-* **Robust Navigation**: Full support for Add/Edit flows via `go_router` route extra bindings.
-* **Notification Popups**: Interactive feedback via customized floating SnackBars on task creation, update, and deletion.
+* **Modern Minimalist UI/UX**: Clean, card-based flat layout featuring iOS System Blue (`#007AFF`) accents, flat white containers, and premium light gray backgrounds (`#F0F0F0`).
+* **Title Length Validation**: Real-time validation restricting task titles to a maximum of 50 characters, complete with interactive red error helpers on exceedance.
+* **Smart Action Button States**: Dynamically disables the "Save" button when the title input is empty or invalid to guarantee data integrity.
+* **Overflow & Ellipsis Prevention**: Gracefully handles long text entries by using single-line text truncation (`...`) on home items to preserve UI layout consistency on any screen size.
+* **Floating Feedback SnackBars**: Displays elegant, floating pop-up notifications on successful task addition, update, or removal for clean user feedback.
+* **Single-Tap Task Modification**: Allows quick editing of existing to-do items by tapping any item card, pre-filling text fields automatically in edit mode.
+* **Effortless Item Removal**: Includes a clean, dedicated "Remove" action button for instantly deleting tasks from the active list.
+
+## Tech Stack & Architecture
+* **Monorepo Workspace (Melos)**: Scalable multi-package workspace architecture separating the main product (`todo_app`) from the shared design system (`ui_elements`).
+* **State Management (Riverpod)**: Scalable local state management built on `flutter_riverpod` and `StateNotifier` for predictable data flows.
+* **Routing & Navigation (GoRouter)**: Clean, declarative path-based routing with type-safe `extra` object bindings for the Add/Edit flows via `go_router`.
+* **Automation Testing (Integration Test)**: Robust browser/device E2E automation testing simulating complete user paths using Flutter's native `integration_test` engine.
 
 ---
 
