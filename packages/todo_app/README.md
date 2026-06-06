@@ -1,17 +1,48 @@
-# todo_app
+# OneNZ To-Do App (`todo_app`)
 
-A new Flutter project.
+The core product package of the OneNZ To-Do application built using Flutter, Riverpod, GoRouter, and a custom `ui_elements` design system.
+
+## Key Features
+* **Modern Minimalist UI/UX**: Soft flat layout using iOS System Blue (`#007AFF`) accents on light gray backgrounds (`#F0F0F0`).
+* **Title Validation**: Real-time validation preventing titles exceeding 50 characters, with interactive helper messages.
+* **Ellipsis Overflow Support**: Truncates long titles and descriptions gracefully with `...` to ensure layout consistency.
+* **State Management**: Scalable architecture powered by `flutter_riverpod` (StateNotifier).
+* **Robust Navigation**: Full support for Add/Edit flows via `go_router` route extra bindings.
+* **Notification Popups**: Interactive feedback via customized floating SnackBars on task creation, update, and deletion.
+
+---
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### 1. Run the Development App
+Ensure your target device is connected, then run:
+```bash
+flutter run
+```
 
-A few resources to get you started if this is your first Flutter project:
+### 2. Running Unit Tests
+To run unit and widget tests (covering state notifier logic, model logic, and widget input validations):
+```bash
+flutter test
+```
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+### 3. Running Automated E2E Integration Tests
+To execute automated browser/device testing simulating user click paths, validations, and flows on a target device:
+```bash
+flutter test integration_test/app_test.dart -d <device-id>
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## Package Architecture
+
+```
+lib/
+├── features/
+│   └── todo/
+│       ├── application/   # Riverpod providers & state notifier
+│       ├── domain/        # Todo entity model definition
+│       └── presentation/  # GoRouter setup & screens (Home, Add/Edit)
+└── main.dart              # App bootstrapping & main configuration
+```
+
