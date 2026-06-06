@@ -5,7 +5,6 @@ import 'package:ui_elements/ui_elements.dart';
 
 import '../../application/todo_provider.dart';
 
-/// Screen for adding a new to-do item.
 class AddTodoScreen extends ConsumerStatefulWidget {
   const AddTodoScreen({super.key});
 

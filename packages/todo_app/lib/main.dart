@@ -8,7 +8,6 @@ void main() {
   runApp(const ProviderScope(child: TodoApp()));
 }
 
-/// Root application widget.
 class TodoApp extends ConsumerWidget {
   const TodoApp({super.key});
 

@@ -2,7 +2,6 @@ import 'package:uuid/uuid.dart';
 
 const _uuid = Uuid();
 
-/// Domain model representing a single to-do item.
 class Todo {
   Todo({
     String? id,
@@ -19,7 +18,6 @@ class Todo {
   final bool isCompleted;
   final DateTime createdAt;
 
-  /// Returns a copy with the given fields replaced.
   Todo copyWith({
     String? title,
     String? description,

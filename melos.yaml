@@ -43,6 +43,8 @@ scripts:
     packageFilters:
       scope:
         - todo_app
+    exec:
+      concurrency: 1
 
   build:web:
     description: Build the todo_app for Web.
@@ -50,3 +52,5 @@ scripts:
     packageFilters:
       scope:
         - todo_app
+    exec:
+      concurrency: 1

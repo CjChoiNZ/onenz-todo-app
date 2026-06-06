@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// A styled, reusable text field for the OneNZ To-Do App.
 class AppTextField extends StatelessWidget {
   const AppTextField({
     super.key,

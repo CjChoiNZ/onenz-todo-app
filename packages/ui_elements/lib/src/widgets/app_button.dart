@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../theme/app_theme.dart';
 
-/// A styled, reusable button for the OneNZ To-Do App.
 class AppButton extends StatelessWidget {
   const AppButton({
     super.key,

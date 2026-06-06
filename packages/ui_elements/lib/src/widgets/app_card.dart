@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// A styled, reusable card for the OneNZ To-Do App.
-///
-/// Wraps [Card] with consistent padding and an optional [onTap] gesture.
 class AppCard extends StatelessWidget {
   const AppCard({
     super.key,

@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-/// Centralised app theme for the OneNZ To-Do App.
-///
-/// Provides a consistent, cohesive look-and-feel across both
-/// Web and Android platforms.
 class AppTheme {
   AppTheme._();
 
-  // ── Colour Palette ──────────────────────────────────────────
   static const Color primaryColor = Color(0xFF6C63FF);
   static const Color secondaryColor = Color(0xFF03DAC6);
   static const Color surfaceColor = Color(0xFFF5F5F5);
@@ -16,7 +11,6 @@ class AppTheme {
   static const Color textColor = Color(0xFF1D1D1D);
   static const Color subtextColor = Color(0xFF757575);
 
-  // ── Light Theme ─────────────────────────────────────────────
   static ThemeData get lightTheme {
     return ThemeData(
       useMaterial3: true,

@@ -5,7 +5,6 @@ import 'package:ui_elements/ui_elements.dart';
 
 import '../../application/todo_provider.dart';
 
-/// Home screen displaying the list of to-do items.
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
