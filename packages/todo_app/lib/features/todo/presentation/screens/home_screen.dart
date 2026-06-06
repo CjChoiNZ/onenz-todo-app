@@ -13,57 +13,72 @@ class HomeScreen extends ConsumerWidget {
     final todos = ref.watch(todoListProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('My To-Do List')),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => context.pushNamed('add'),
-        child: const Icon(Icons.add),
+      appBar: AppPageHeader(
+        title: 'Home',
+        showBackButton: true,
+      ),
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(12, 8, 12, 16),
+          child: AppButton(
+            label: 'Add To-Do',
+            onPressed: () => context.pushNamed('add'),
+            backgroundColor: const Color(0xFF007AFF),
+          ),
+        ),
       ),
       body: todos.isEmpty
           ? const _EmptyState()
           : ListView.builder(
-              padding: const EdgeInsets.only(top: 12, bottom: 80),
+              padding: const EdgeInsets.only(top: 12, bottom: 16),
               itemCount: todos.length,
               itemBuilder: (context, index) {
                 final todo = todos[index];
                 return AppCard(
-                  onTap: () =>
-                      ref.read(todoListProvider.notifier).toggle(todo.id),
+                  onTap: () => context.pushNamed('add', extra: todo),
                   child: Row(
                     children: [
-                      Checkbox(
-                        value: todo.isCompleted,
-                        onChanged: (_) => ref
-                            .read(todoListProvider.notifier)
-                            .toggle(todo.id),
-                      ),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                             Text(
                               todo.title,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black,
                                 decoration: todo.isCompleted
                                     ? TextDecoration.lineThrough
                                     : null,
                               ),
                             ),
                             if (todo.description.isNotEmpty)
+                              const SizedBox(height: 4),
+                            if (todo.description.isNotEmpty)
                               Text(
                                 todo.description,
-                                style: Theme.of(context).textTheme.bodyMedium,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  fontSize: 16.5,
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.black,
+                                ),
                               ),
                           ],
                         ),
                       ),
-                      IconButton(
-                        icon:
-                            const Icon(Icons.delete_outline, color: Colors.red),
+                      TextButton(
                         onPressed: () => ref
                             .read(todoListProvider.notifier)
                             .remove(todo.id),
+                        child: const Text(
+                          'Remove',
+                          style: TextStyle(color: Colors.red),
+                        ),
                       ),
                     ],
                   ),
@@ -83,9 +98,6 @@ class _EmptyState extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.check_circle_outline,
-              size: 80, color: Colors.grey.shade400),
-          const SizedBox(height: 16),
           Text(
             'No tasks yet!',
             style: Theme.of(context)
@@ -95,7 +107,7 @@ class _EmptyState extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            'Tap + to add your first to-do.',
+            'Tap Add To-Do to get started.',
             style: Theme.of(context).textTheme.bodyMedium,
           ),
         ],

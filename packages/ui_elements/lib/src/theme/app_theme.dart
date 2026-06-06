@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class AppTheme {
   AppTheme._();
 
-  static const Color primaryColor = Color(0xFF6C63FF);
+  static const Color primaryColor = Color(0xFF007AFF);
   static const Color secondaryColor = Color(0xFF03DAC6);
-  static const Color surfaceColor = Color(0xFFF5F5F5);
+  static const Color surfaceColor = Color(0xFFF0F0F0);
   static const Color errorColor = Color(0xFFCF6679);
   static const Color onPrimaryColor = Colors.white;
   static const Color textColor = Color(0xFF1D1D1D);
@@ -22,10 +22,16 @@ class AppTheme {
       ),
       scaffoldBackgroundColor: surfaceColor,
       appBarTheme: const AppBarTheme(
-        backgroundColor: primaryColor,
-        foregroundColor: onPrimaryColor,
+        backgroundColor: surfaceColor,
+        foregroundColor: Colors.black,
         elevation: 0,
+        scrolledUnderElevation: 0,
         centerTitle: true,
+        titleTextStyle: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.w700,
+          color: Colors.black,
+        ),
       ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: primaryColor,
@@ -46,7 +52,8 @@ class AppTheme {
         ),
       ),
       cardTheme: CardThemeData(
-        elevation: 2,
+        color: Colors.white,
+        elevation: 0,
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(14),

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../screens/home_screen.dart';
 import '../screens/add_todo_screen.dart';
+import '../../domain/todo_model.dart';
 
 final appRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
@@ -16,7 +17,9 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/add',
         name: 'add',
-        builder: (context, state) => const AddTodoScreen(),
+        builder: (context, state) => AddTodoScreen(
+          editTodo: state.extra as Todo?,
+        ),
       ),
     ],
   );

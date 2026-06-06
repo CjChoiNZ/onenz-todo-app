@@ -9,40 +9,53 @@ class AppButton extends StatelessWidget {
     required this.onPressed,
     this.isOutlined = false,
     this.isLoading = false,
+    this.backgroundColor,
+    this.foregroundColor,
   });
 
   final String label;
   final VoidCallback? onPressed;
   final bool isOutlined;
   final bool isLoading;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
 
   @override
   Widget build(BuildContext context) {
+    final bgColor = backgroundColor ?? AppTheme.primaryColor;
+    final fgColor = foregroundColor ?? AppTheme.onPrimaryColor;
+
+    Widget button;
     if (isOutlined) {
-      return OutlinedButton(
+      button = OutlinedButton(
         onPressed: isLoading ? null : onPressed,
         style: OutlinedButton.styleFrom(
-          side: const BorderSide(color: AppTheme.primaryColor),
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+          side: BorderSide(color: bgColor),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
         ),
-        child: _buildChild(AppTheme.primaryColor),
+        child: _buildChild(bgColor),
+      );
+    } else {
+      button = ElevatedButton(
+        onPressed: isLoading ? null : onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: bgColor,
+          foregroundColor: fgColor,
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+        child: _buildChild(fgColor),
       );
     }
 
-    return ElevatedButton(
-      onPressed: isLoading ? null : onPressed,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: AppTheme.primaryColor,
-        foregroundColor: AppTheme.onPrimaryColor,
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-      ),
-      child: _buildChild(AppTheme.onPrimaryColor),
+    return SizedBox(
+      width: double.infinity,
+      child: button,
     );
   }
 
@@ -57,6 +70,13 @@ class AppButton extends StatelessWidget {
         ),
       );
     }
-    return Text(label, style: TextStyle(fontSize: 16, color: textColor));
+    return Text(
+      label,
+      style: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+        color: textColor,
+      ),
+    );
   }
 }
