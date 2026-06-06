@@ -62,8 +62,12 @@ void main() {
 
       // Verify we are on Edit screen and fields are prefilled
       expect(find.text('Edit To-Do'), findsWidgets); // AppPageHeader title is 'Edit To-Do'
-      expect(find.text('E2E Test Task'), findsOneWidget);
-      expect(find.text('E2E Description'), findsOneWidget);
+      
+      final titleFieldFinder = find.byType(TextField).first;
+      final descFieldFinder = find.byType(TextField).last;
+      
+      expect(tester.widget<TextField>(titleFieldFinder).controller?.text, 'E2E Test Task');
+      expect(tester.widget<TextField>(descFieldFinder).controller?.text, 'E2E Description');
 
       // Edit the title
       await tester.enterText(find.byType(AppTextField).first, 'E2E Test Task Edited');
