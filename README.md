@@ -78,6 +78,23 @@ Tests cover:
 - `Todo` model — creation, `copyWith`, equality
 - `TodoListNotifier` — add, toggle, remove, edit
 
+### Integration Tests (Mobile Device)
+
+Runs the full E2E suite on a connected physical device or emulator.
+
+```bash
+cd packages/todo_app
+
+# List connected devices to get your device ID:
+flutter devices
+
+# Run integration tests on a specific device:
+flutter test integration_test/app_test.dart -d {device-id}
+
+# Example:
+flutter test integration_test/app_test.dart -d 94UAY0T3MH
+```
+
 ### Integration Tests (Web / Browser)
 
 Runs the full E2E suite in a real headless Chrome browser — the same command CI uses.
@@ -95,9 +112,6 @@ flutter drive \
   -d web-server \
   --browser-name=chrome
 ```
-
-> Quick alternative (no chromedriver, runs against a desktop/mobile device):
-> `flutter test integration_test`
 
 Covers the full user flow: empty state → add todo (with title validation) → edit todo → remove → empty state.
 
