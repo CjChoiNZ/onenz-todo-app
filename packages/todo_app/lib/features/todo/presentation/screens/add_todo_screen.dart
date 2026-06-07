@@ -58,29 +58,13 @@ class _AddTodoScreenState extends ConsumerState<AddTodoScreen> {
             title: title,
             description: _descriptionController.text.trim(),
           );
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text('Task updated successfully'),
-          behavior: SnackBarBehavior.floating,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          duration: const Duration(seconds: 2),
-        ),
-      );
+      showAppSnackBar(context, 'Task updated successfully');
     } else {
       ref.read(todoListProvider.notifier).add(
             title,
             description: _descriptionController.text.trim(),
           );
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text('Task added successfully'),
-          behavior: SnackBarBehavior.floating,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          duration: const Duration(seconds: 2),
-        ),
-      );
+      showAppSnackBar(context, 'Task added successfully');
     }
 
     context.pop();
@@ -100,7 +84,6 @@ class _AddTodoScreenState extends ConsumerState<AddTodoScreen> {
           child: AppButton(
             label: 'Save',
             onPressed: _isTitleValid ? _submit : null,
-            backgroundColor: const Color(0xFF007AFF),
           ),
         ),
       ),
@@ -122,7 +105,8 @@ class _AddTodoScreenState extends ConsumerState<AddTodoScreen> {
                 padding: const EdgeInsets.only(top: 6, left: 4),
                 child: Text(
                   'Title cannot exceed 50 characters (${_titleController.text.trim().length}/50)',
-                  style: const TextStyle(color: Colors.red, fontSize: 13),
+                  style:
+                      const TextStyle(color: AppTheme.errorColor, fontSize: 13),
                 ),
               ),
             const SizedBox(height: 16),

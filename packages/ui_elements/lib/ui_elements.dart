@@ -12,3 +12,4 @@ export 'src/widgets/app_button.dart';
 export 'src/widgets/app_text_field.dart';
 export 'src/widgets/app_card.dart';
 export 'src/widgets/app_page_header.dart';
+export 'src/widgets/app_snackbar.dart';

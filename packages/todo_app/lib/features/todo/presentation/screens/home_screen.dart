@@ -20,7 +20,6 @@ class HomeScreen extends ConsumerWidget {
           child: AppButton(
             label: 'Add To-Do',
             onPressed: () => context.pushNamed('add'),
-            backgroundColor: const Color(0xFF007AFF),
           ),
         ),
       ),
@@ -46,7 +45,7 @@ class HomeScreen extends ConsumerWidget {
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
-                                color: Colors.black,
+                                color: AppTheme.textColor,
                                 decoration: todo.isCompleted
                                     ? TextDecoration.lineThrough
                                     : null,
@@ -62,7 +61,7 @@ class HomeScreen extends ConsumerWidget {
                                 style: const TextStyle(
                                   fontSize: 16.5,
                                   fontWeight: FontWeight.w300,
-                                  color: Colors.black,
+                                  color: AppTheme.textColor,
                                 ),
                               ),
                           ],
@@ -71,19 +70,11 @@ class HomeScreen extends ConsumerWidget {
                       TextButton(
                         onPressed: () {
                           ref.read(todoListProvider.notifier).remove(todo.id);
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: const Text('Task removed successfully'),
-                              behavior: SnackBarBehavior.floating,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              duration: const Duration(seconds: 2),
-                            ),
-                          );
+                          showAppSnackBar(context, 'Task removed successfully');
                         },
                         child: const Text(
                           'Remove',
-                          style: TextStyle(color: Colors.red),
+                          style: TextStyle(color: AppTheme.errorColor),
                         ),
                       ),
                     ],

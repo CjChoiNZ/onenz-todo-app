@@ -6,7 +6,7 @@ class AppTheme {
   static const Color primaryColor = Color(0xFF007AFF);
   static const Color secondaryColor = Color(0xFF03DAC6);
   static const Color surfaceColor = Color(0xFFF0F0F0);
-  static const Color errorColor = Color(0xFFCF6679);
+  static const Color errorColor = Color(0xFFFF3B30); // iOS System Red
   static const Color onPrimaryColor = Colors.white;
   static const Color textColor = Color(0xFF1D1D1D);
   static const Color subtextColor = Color(0xFF757575);
