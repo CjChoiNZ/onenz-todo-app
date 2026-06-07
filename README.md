@@ -78,21 +78,42 @@ Tests cover:
 - `Todo` model — creation, `copyWith`, equality
 - `TodoListNotifier` — add, toggle, remove, edit
 
-### Integration Tests (Web)
+### Integration Tests (Web / Browser)
+
+Runs the full E2E suite in a real headless Chrome browser — the same command CI uses.
 
 ```bash
 cd packages/todo_app
-flutter test integration_test --platform chrome
+
+# 1. Start chromedriver (must be on PATH) in a separate terminal:
+chromedriver --port=4444
+
+# 2. Drive the integration test in Chrome:
+flutter drive \
+  --driver=test_driver/integration_test.dart \
+  --target=integration_test/app_test.dart \
+  -d web-server \
+  --browser-name=chrome
 ```
 
-Covers the full user flow: empty state → add todo → toggle completion → delete.
+> Quick alternative (no chromedriver, runs against a desktop/mobile device):
+> `flutter test integration_test`
+
+Covers the full user flow: empty state → add todo (with title validation) → edit todo → remove → empty state.
+
+## Continuous Integration
+
+`.github/workflows/ci.yml` runs on every push and pull request:
+
+1. **Analyze & Unit Tests** — `dart format` check, `melos run analyze`, `melos run test`
+2. **Web Integration Tests** — drives the E2E suite in headless Chrome via `chromedriver`
 
 ## Screens
 
 | Home Screen | Add To-Do Screen |
 |-------------|------------------|
-| Displays todo list with check/delete | Form with title + description fields |
-| FAB navigates to add screen | Save button returns to home |
+| Displays todo list; tap a card to edit, Remove to delete | Form with title + description fields |
+| Bottom "Add To-Do" button navigates to add screen | Save button returns to home |
 
 ## License
 

@@ -62,7 +62,8 @@ class _AddTodoScreenState extends ConsumerState<AddTodoScreen> {
         SnackBar(
           content: const Text('Task updated successfully'),
           behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           duration: const Duration(seconds: 2),
         ),
       );
@@ -75,7 +76,8 @@ class _AddTodoScreenState extends ConsumerState<AddTodoScreen> {
         SnackBar(
           content: const Text('Task added successfully'),
           behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           duration: const Duration(seconds: 2),
         ),
       );

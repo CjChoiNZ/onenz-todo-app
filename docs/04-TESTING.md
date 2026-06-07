@@ -33,19 +33,30 @@ Location: `packages/todo_app/integration_test/`
 ### Test Scenarios
 
 1. App starts → empty state displayed
-2. Tap FAB → navigates to AddTodoScreen
-3. Enter title + save → item appears on HomeScreen
-4. Tap checkbox → completion state toggles
-5. Tap delete → item removed
+2. Tap "Add To-Do" → navigates to AddTodoScreen
+3. Title > 50 chars → Save stays disabled + validation message shown
+4. Enter a valid title + description → Save → item appears on HomeScreen
+5. Tap the item → edit mode (prefilled) → change title → Save → list updates
+6. Tap Remove → item deleted → empty state shown again
 
-### Run
+### Run (headless Chrome — matches CI)
 
 ```bash
 cd packages/todo_app
-flutter test integration_test --platform chrome
+chromedriver --port=4444 &
+flutter drive \
+  --driver=test_driver/integration_test.dart \
+  --target=integration_test/app_test.dart \
+  -d web-server \
+  --browser-name=chrome
 ```
+
+## CI
+
+`.github/workflows/ci.yml` runs analyze + unit tests and the web integration
+suite (headless Chrome via chromedriver) on every push and PR.
 
 ## Done Criteria
 
 - All unit tests pass
-- Web integration tests pass on Chrome
+- Web integration tests pass on Chrome (locally and in CI)

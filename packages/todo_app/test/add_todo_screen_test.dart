@@ -15,16 +15,19 @@ void main() {
   }
 
   group('AddTodoScreen Widget Tests', () {
-    testWidgets('Save button is disabled when title is empty', (WidgetTester tester) async {
+    testWidgets('Save button is disabled when title is empty',
+        (WidgetTester tester) async {
       await tester.pumpWidget(buildTestableWidget());
       await tester.pump();
 
       // Find the AppButton / ElevatedButton
-      final elevatedButton = tester.widget<ElevatedButton>(find.byType(ElevatedButton));
+      final elevatedButton =
+          tester.widget<ElevatedButton>(find.byType(ElevatedButton));
       expect(elevatedButton.onPressed, isNull); // Disabled
     });
 
-    testWidgets('Save button is enabled when a valid title is entered', (WidgetTester tester) async {
+    testWidgets('Save button is enabled when a valid title is entered',
+        (WidgetTester tester) async {
       await tester.pumpWidget(buildTestableWidget());
       await tester.pump();
 
@@ -32,11 +35,14 @@ void main() {
       await tester.enterText(find.byType(AppTextField).first, 'Buy milk');
       await tester.pumpAndSettle();
 
-      final elevatedButton = tester.widget<ElevatedButton>(find.byType(ElevatedButton));
+      final elevatedButton =
+          tester.widget<ElevatedButton>(find.byType(ElevatedButton));
       expect(elevatedButton.onPressed, isNotNull); // Enabled
     });
 
-    testWidgets('Save button is disabled and error message is shown when title exceeds 50 characters', (WidgetTester tester) async {
+    testWidgets(
+        'Save button is disabled and error message is shown when title exceeds 50 characters',
+        (WidgetTester tester) async {
       await tester.pumpWidget(buildTestableWidget());
       await tester.pump();
 
@@ -46,14 +52,18 @@ void main() {
       await tester.pumpAndSettle();
 
       // Save button should be disabled
-      final elevatedButton = tester.widget<ElevatedButton>(find.byType(ElevatedButton));
+      final elevatedButton =
+          tester.widget<ElevatedButton>(find.byType(ElevatedButton));
       expect(elevatedButton.onPressed, isNull); // Disabled
 
       // Error message should be shown
-      expect(find.text('Title cannot exceed 50 characters (51/50)'), findsOneWidget);
+      expect(find.text('Title cannot exceed 50 characters (51/50)'),
+          findsOneWidget);
     });
 
-    testWidgets('Pre-fills fields and enables Save button when editTodo is provided', (WidgetTester tester) async {
+    testWidgets(
+        'Pre-fills fields and enables Save button when editTodo is provided',
+        (WidgetTester tester) async {
       final todo = Todo(title: 'Edit me', description: 'Original description');
       await tester.pumpWidget(buildTestableWidget(editTodo: todo));
       await tester.pump();
@@ -63,7 +73,8 @@ void main() {
       expect(find.text('Original description'), findsOneWidget);
 
       // Save button should be enabled by default
-      final elevatedButton = tester.widget<ElevatedButton>(find.byType(ElevatedButton));
+      final elevatedButton =
+          tester.widget<ElevatedButton>(find.byType(ElevatedButton));
       expect(elevatedButton.onPressed, isNotNull); // Enabled
     });
   });

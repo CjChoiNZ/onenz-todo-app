@@ -27,7 +27,17 @@ flutter test
 ```
 
 ### 3. Running Automated E2E Integration Tests
-To execute automated browser/device testing simulating user click paths, validations, and flows on a target device:
+
+**In a browser (headless Chrome)** — matches CI. Start `chromedriver --port=4444` first, then:
+```bash
+flutter drive \
+  --driver=test_driver/integration_test.dart \
+  --target=integration_test/app_test.dart \
+  -d web-server \
+  --browser-name=chrome
+```
+
+**On a connected device** (quick alternative):
 ```bash
 flutter test integration_test/app_test.dart -d <device-id>
 ```

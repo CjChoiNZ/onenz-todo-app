@@ -13,7 +13,7 @@ class HomeScreen extends ConsumerWidget {
     final todos = ref.watch(todoListProvider);
 
     return Scaffold(
-      appBar: AppPageHeader(
+      appBar: const AppPageHeader(
         title: 'Home',
         showBackButton: true,
       ),
@@ -42,7 +42,7 @@ class HomeScreen extends ConsumerWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                             Text(
+                            Text(
                               todo.title,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,

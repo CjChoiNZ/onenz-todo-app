@@ -9,7 +9,9 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   group('Todo App E2E Integration Tests', () {
-    testWidgets('full flow: verify empty state -> add task with validation -> edit task -> remove task', (tester) async {
+    testWidgets(
+        'full flow: verify empty state -> add task with validation -> edit task -> remove task',
+        (tester) async {
       // 1. Launch the app
       await tester.pumpWidget(const ProviderScope(child: TodoApp()));
       await tester.pumpAndSettle();
@@ -22,10 +24,12 @@ void main() {
       await tester.pumpAndSettle();
 
       // Verify we are on Add screen
-      expect(find.text('Add To-Do'), findsWidgets); // AppPageHeader title is 'Add To-Do'
+      expect(find.text('Add To-Do'),
+          findsWidgets); // AppPageHeader title is 'Add To-Do'
 
       // 4. Verification that Save button starts disabled (empty title)
-      var saveButton = tester.widget<ElevatedButton>(find.byType(ElevatedButton));
+      var saveButton =
+          tester.widget<ElevatedButton>(find.byType(ElevatedButton));
       expect(saveButton.onPressed, isNull);
 
       // 5. Validation check for title > 50 characters
@@ -37,7 +41,8 @@ void main() {
       saveButton = tester.widget<ElevatedButton>(find.byType(ElevatedButton));
       expect(saveButton.onPressed, isNull);
       // Validation warning text should be present
-      expect(find.text('Title cannot exceed 50 characters (51/50)'), findsOneWidget);
+      expect(find.text('Title cannot exceed 50 characters (51/50)'),
+          findsOneWidget);
 
       // 6. Enter valid title and description
       await tester.enterText(find.byType(AppTextField).first, 'E2E Test Task');
@@ -61,16 +66,20 @@ void main() {
       await tester.pumpAndSettle();
 
       // Verify we are on Edit screen and fields are prefilled
-      expect(find.text('Edit To-Do'), findsWidgets); // AppPageHeader title is 'Edit To-Do'
-      
+      expect(find.text('Edit To-Do'),
+          findsWidgets); // AppPageHeader title is 'Edit To-Do'
+
       final titleFieldFinder = find.byType(TextField).first;
       final descFieldFinder = find.byType(TextField).last;
-      
-      expect(tester.widget<TextField>(titleFieldFinder).controller?.text, 'E2E Test Task');
-      expect(tester.widget<TextField>(descFieldFinder).controller?.text, 'E2E Description');
+
+      expect(tester.widget<TextField>(titleFieldFinder).controller?.text,
+          'E2E Test Task');
+      expect(tester.widget<TextField>(descFieldFinder).controller?.text,
+          'E2E Description');
 
       // Edit the title
-      await tester.enterText(find.byType(AppTextField).first, 'E2E Test Task Edited');
+      await tester.enterText(
+          find.byType(AppTextField).first, 'E2E Test Task Edited');
       await tester.pumpAndSettle();
 
       // Save the edited task
