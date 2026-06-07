@@ -101,6 +101,16 @@ flutter drive \
 
 Covers the full user flow: empty state → add todo (with title validation) → edit todo → remove → empty state.
 
+## AI-Assisted Development
+
+This project was designed, implemented, and tested with AI (Claude Code) using:
+
+- **Custom Instructions** — `CLAUDE.md` (philosophy, stack, Git rules)
+- **Specs** — ordered `docs/01`…`05`, executed `01 → 05`
+- **Skills** — `.claude/skills/scaffold-feature/` encodes the repo conventions for on-pattern feature work
+
+See [`docs/06-AI-WORKFLOW.md`](docs/06-AI-WORKFLOW.md) for the full mapping.
+
 ## Continuous Integration
 
 `.github/workflows/ci.yml` runs on every push and pull request:

@@ -11,6 +11,7 @@
 | 03 | `03-TODO-APP.md` | Main app: model, state, routing, screens |
 | 04 | `04-TESTING.md` | Unit tests + web automation tests |
 | 05 | `05-README.md` | README writing guide |
+| 06 | `06-AI-WORKFLOW.md` | How the project was built with AI (Skills, Specs, Custom Instructions) |
 
 ## Execution Order
 
