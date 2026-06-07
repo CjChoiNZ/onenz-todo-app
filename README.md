@@ -6,7 +6,7 @@ A simple To-Do application built with Flutter, demonstrating monorepo setup, sta
 
 | Layer            | Technology      |
 |------------------|-----------------|
-| Framework        | Flutter 3.44+   |
+| Framework        | Flutter 3.29+   |
 | Monorepo         | Melos           |
 | State Management | Riverpod        |
 | Navigation       | go_router       |
@@ -97,7 +97,7 @@ flutter test integration_test/app_test.dart -d 94UAY0T3MH
 
 ### Integration Tests (Web / Browser)
 
-Runs the full E2E suite in a real headless Chrome browser — the same command CI uses.
+Runs the full E2E suite in a real Chrome browser — the same suite CI runs headlessly.
 
 ```bash
 cd packages/todo_app
@@ -114,6 +114,8 @@ flutter drive \
 ```
 
 Covers the full user flow: empty state → add todo (with title validation) → edit todo → remove → empty state.
+
+> **Tip:** Add `--headless` to run without opening a browser window (this is how CI runs it).
 
 ## AI-Assisted Development
 
@@ -138,7 +140,3 @@ See [`docs/06-AI-WORKFLOW.md`](docs/06-AI-WORKFLOW.md) for the full mapping.
 |-------------|------------------|
 | Displays todo list; tap a card to edit, Remove to delete | Form with title + description fields |
 | Bottom "Add To-Do" button navigates to add screen | Save button returns to home |
-
-## License
-
-MIT
