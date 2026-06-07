@@ -13,10 +13,7 @@ class HomeScreen extends ConsumerWidget {
     final todos = ref.watch(todoListProvider);
 
     return Scaffold(
-      appBar: const AppPageHeader(
-        title: 'Home',
-        showBackButton: true,
-      ),
+      appBar: const AppPageHeader(title: 'Home'),
       bottomNavigationBar: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(12, 8, 12, 16),
