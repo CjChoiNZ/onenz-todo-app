@@ -55,15 +55,18 @@ todo_app/
 
 ### HomeScreen
 - Displays todo list using AppCard
-- Checkbox to toggle completion
-- Delete button
-- FAB navigates to `/add`
-- Empty state display
+- Tap a card → navigates to `/add` in edit mode (fields prefilled)
+- Remove button (per card) deletes the todo
+- Completed todos render with a strikethrough title
+- Bottom "Add To-Do" button navigates to `/add`
+- Empty state display when there are no todos
 
 ### AddTodoScreen
-- Title input (AppTextField, required)
-- Description input (AppTextField, optional)
-- Save button (AppButton) — saves and navigates back to home
+- Title input (AppTextField, required) — real-time validation, max 50 chars
+- Description input (AppTextField, optional, multiline)
+- Save button (AppButton) — disabled until the title is valid; saves and navigates back to home
+- Shared by Add and Edit flows via the `editTodo` parameter (passed as go_router `extra`)
+- Floating SnackBar feedback on add / update
 
 ## main.dart
 
